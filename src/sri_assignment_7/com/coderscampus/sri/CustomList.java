@@ -1,4 +1,4 @@
-package com.coderscampus.arraylist;
+package sri_assignment_7.com.coderscampus.sri;
 
 public interface CustomList<T> {
 

@@ -1,8 +1,8 @@
-package sri_assignment_7.comcoderscampus.sri;
+package sri_assignment_7.com.coderscampus.sri;
 
-public class arraylistImpl {
+public class CustomArrayListImp {
 	// Insert amount of elements to add to the array:
-	private static int AMOUNT = 160;
+	private static int AMOUNT = 170;
 
 	// Insert the size of the array for testing:
 	private static int ARRAY_SIZE = 160;
@@ -22,8 +22,5 @@ public class arraylistImpl {
 
 	}
 
-	public void arrayListImpl() {
-		System.out.println("Hello there man");
-	}
 
 }

@@ -1,4 +1,4 @@
-package sri_assignment_7.comcoderscampus.sri;
+package sri_assignment_7.com.coderscampus.sri;
 
 public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10];
