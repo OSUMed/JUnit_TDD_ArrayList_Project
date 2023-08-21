@@ -136,17 +136,18 @@ class CustomArrayListTest {
 		});
 	}
 
+	// If arr = [5] and add(int 1, T 4) -> arr = [5, 4] so no out of bounds exception:
 	@Test
 	void should_not_return_out_of_bounds_exception_if_index_added_is_at_new_end_of_list() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
 		// Act
-		sut.add(10);
+		sut.add(5);
 
 		// Assert: Integer is in the first index of customList
 		assertDoesNotThrow(() -> {
-			sut.add(1,3);
+			sut.add(1,4);
 		});
 	}
 

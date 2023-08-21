@@ -40,7 +40,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 //	5 6
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
-		// TODO Auto-generated method stub
+		// Throw if new index is above size or not at new end of list:
 		if (index > size && index != size+1) throw new IndexOutOfBoundsException();
 		return true;
 	}
