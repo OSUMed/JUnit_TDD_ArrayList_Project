@@ -72,9 +72,11 @@ public class CustomArrayList<T> implements CustomList<T> {
 		// TODO Auto-generated method stub
 		if (index > size || index < 0) throw new IndexOutOfBoundsException();
 		
-		// iterate to index
-		
-		// when at index, arr[i] = arr[i+1] until end of list
+		// from index, arr[i] = arr[i+1] until end of list
+		// stop at size-1 so we grab the last index with i+1 only
+		for (int i = index; i <= size-1; i++) {
+			items[i] = items[i+1];
+		}
 		
 		// check if items.length() is half of size. If so, reduce 
 		// array by size 2
