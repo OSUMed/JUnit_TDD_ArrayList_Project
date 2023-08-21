@@ -75,6 +75,7 @@ class CustomArrayListTest {
 		assertEquals(true, expectedResult);
 	}
 
+	// Check if getSize method works:
 	@Test
 	void should_return_size_1_with_add_1_item() {
 		// Arrange:
@@ -88,6 +89,7 @@ class CustomArrayListTest {
 		assertEquals(1, expectedSize);
 	}
 
+	// Check if get method works:
 	@Test
 	void should_return_correct_value_at_index_5() {
 		// Arrange:
@@ -104,7 +106,7 @@ class CustomArrayListTest {
 		assertEquals(5, expectedResult);
 	}
 
-	// Check Exceptions for top first three method:
+	// Check if Exceptions are being triggered:
 	@Test
 	void should_return_out_of_bounds_exception_for_get_index() {
 		// Arrange:
