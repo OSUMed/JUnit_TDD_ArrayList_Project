@@ -14,6 +14,7 @@ class CustomArrayListTest {
 	// Act
 	// Assert
 
+	// First 4 check the add(T item) method:
 	@Test
 	void should_add_one_item_to_list() {
 		// Arrange:
@@ -106,7 +107,7 @@ class CustomArrayListTest {
 		assertEquals(5, expectedResult);
 	}
 
-	// Check if Exceptions are being triggered:
+	// Next 3 are if Exceptions for the 3 methods are being triggered:
 	@Test
 	void should_return_out_of_bounds_exception_for_get_index() {
 		// Arrange:

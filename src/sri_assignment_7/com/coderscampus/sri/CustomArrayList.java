@@ -3,35 +3,24 @@ package sri_assignment_7.com.coderscampus.sri;
 public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10];
 	private Integer size = 0;
-	private Integer index = 0;
-	private Integer array_multiplier = 1;
 
 	@Override
 	public boolean add(T item) {
-		if (size >= 10*array_multiplier) {
-			
-			// Increase size of array by 2 if array is full:
-			Object[] newItems = new Object[size * 2];
-			
-			// Copy items from array to new bigger array:
-			int newIndex = 0;
-			for (int i = 0; i < size; i++) {
-				newItems[newIndex] = items[i];
-				newIndex++;
-			}
-			
-			// Update private variables to updated values:
-			items = newItems;
-			index = newIndex;
-
-			// Update next trigger condition variable:
-			array_multiplier *= 2;
+		if (items.length == size) {
+			expandBackingObjectArray();
 		}
 		
 		// For all calls, add to array and update tracking variables:
-		items[index++] = item;
-		size++;
+		items[size++] = item;
 		return true;
+	}
+	
+	private void expandBackingObjectArray() {
+		Object[] oldArray = items;
+		items = new Object[size*2];
+		for (int i = 0; i < size; i++) {
+			items[i] = oldArray[i];
+		}
 	}
 
 	@Override
@@ -40,22 +29,22 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	@Override
-	public T get(int ind) throws IndexOutOfBoundsException {
-		if (ind > index) throw new IndexOutOfBoundsException();
-		return (T) items[ind];
+	public T get(int index) throws IndexOutOfBoundsException {
+		if (index > size) throw new IndexOutOfBoundsException();
+		return (T) items[index];
 	}
 
 	@Override
-	public boolean add(int ind, T item) throws IndexOutOfBoundsException {
+	public boolean add(int index, T item) throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
-		if (ind > index) throw new IndexOutOfBoundsException();
+		if (index > size) throw new IndexOutOfBoundsException();
 		return true;
 	}
 
 	@Override
-	public T remove(int ind) throws IndexOutOfBoundsException {
+	public T remove(int index) throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
-		if (ind > index) throw new IndexOutOfBoundsException();
+		if (index > size) throw new IndexOutOfBoundsException();
 		return null;
 	}
 
