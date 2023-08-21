@@ -29,8 +29,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		}
 		
 		// For all calls, add to array and update tracking variables:
-		items[index] = item;
-		index++;
+		items[index++] = item;
 		size++;
 		return true;
 	}
@@ -42,8 +41,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public T get(int index) {
-		T item = (T) items[index];
-		return item;
+		return (T) items[index];
 	}
 
 	@Override
