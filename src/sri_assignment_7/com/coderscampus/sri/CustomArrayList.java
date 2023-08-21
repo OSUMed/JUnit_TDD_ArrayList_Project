@@ -22,6 +22,14 @@ public class CustomArrayList<T> implements CustomList<T> {
 			items[i] = oldArray[i];
 		}
 	}
+	
+	private void reduceBackingObjectArray() {
+		Object[] oldArray = items;
+		items = new Object[size/2];
+		for (int i = 0; i < size; i++) {
+			items[i] = oldArray[i];
+		}
+	}
 
 	@Override
 	public int getSize() {
@@ -42,6 +50,20 @@ public class CustomArrayList<T> implements CustomList<T> {
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
 		// Throw if new index is above size or not at new end of list:
 		if (index > size && index != size+1) throw new IndexOutOfBoundsException();
+		
+		// check if array needs to inc size 2:
+		if (items.length == size) {
+			expandBackingObjectArray();
+		}
+		
+		
+		// start at last index+1 -> index right of index to add
+		
+			// arr[i] = arr[i-1]
+		
+		// arr[index] = item since we created a hole
+		
+		
 		return true;
 	}
 
@@ -49,6 +71,17 @@ public class CustomArrayList<T> implements CustomList<T> {
 	public T remove(int index) throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
 		if (index > size) throw new IndexOutOfBoundsException();
+		
+		// iterate to index
+		
+		// when at index, arr[i] = arr[i+1] until end of list
+		
+		// check if items.length() is half of size. If so, reduce 
+		// array by size 2
+		if (items.length/2 == size) {
+			reduceBackingObjectArray();
+		} 
+		
 		return null;
 	}
 
