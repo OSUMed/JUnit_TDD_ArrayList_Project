@@ -40,19 +40,22 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	@Override
-	public T get(int index) {
-		return (T) items[index];
+	public T get(int ind) throws IndexOutOfBoundsException {
+		if (ind > index) throw new IndexOutOfBoundsException();
+		return (T) items[ind];
 	}
 
 	@Override
-	public boolean add(int index, T item) throws IndexOutOfBoundsException {
+	public boolean add(int ind, T item) throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
+		if (ind > index) throw new IndexOutOfBoundsException();
 		return true;
 	}
 
 	@Override
-	public T remove(int index) throws IndexOutOfBoundsException {
+	public T remove(int ind) throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
+		if (ind > index) throw new IndexOutOfBoundsException();
 		return null;
 	}
 
