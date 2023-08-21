@@ -33,11 +33,15 @@ public class CustomArrayList<T> implements CustomList<T> {
 		if (index > size) throw new IndexOutOfBoundsException();
 		return (T) items[index];
 	}
-
+	
+//	0 1 2 3
+//	5
+//	add(6,1)
+//	5 6
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
-		if (index > size) throw new IndexOutOfBoundsException();
+		if (index > size && index != size+1) throw new IndexOutOfBoundsException();
 		return true;
 	}
 

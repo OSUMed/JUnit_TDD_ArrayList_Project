@@ -107,33 +107,49 @@ class CustomArrayListTest {
 		assertEquals(5, expectedResult);
 	}
 
-	// Next 3 are if Exceptions for the 3 methods are being triggered:
+	// Next are to test if Exceptions are being triggered for the right cases:
 	@Test
 	void should_return_out_of_bounds_exception_for_get_index() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
-		
+
 		// Act
 		sut.add(10);
-		
+
 		// Assert: Integer is in the first index of customList
 		assertThrows(IndexOutOfBoundsException.class, () -> {
 			sut.get(3);
 		});
 	}
+
 	@Test
 	void should_return_out_of_bounds_exception_for_add_with_index() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
-		
+
 		// Act
 		sut.add(10);
-		
+
 		// Assert: Integer is in the first index of customList
 		assertThrows(IndexOutOfBoundsException.class, () -> {
-			sut.add(3,3);
+			sut.add(3, 3);
 		});
 	}
+
+	@Test
+	void should_not_return_out_of_bounds_exception_if_index_added_is_at_new_end_of_list() {
+		// Arrange:
+		CustomList<Integer> sut = new CustomArrayList<>();
+
+		// Act
+		sut.add(10);
+
+		// Assert: Integer is in the first index of customList
+		assertDoesNotThrow(() -> {
+			sut.add(1,3);
+		});
+	}
+
 	@Test
 	void should_return_out_of_bounds_exception_for_remove_at_index() {
 		// Arrange:
