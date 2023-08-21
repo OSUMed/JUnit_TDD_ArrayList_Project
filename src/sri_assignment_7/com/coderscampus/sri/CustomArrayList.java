@@ -70,7 +70,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
-		if (index > size) throw new IndexOutOfBoundsException();
+		if (index > size || index < 0) throw new IndexOutOfBoundsException();
 		
 		// iterate to index
 		

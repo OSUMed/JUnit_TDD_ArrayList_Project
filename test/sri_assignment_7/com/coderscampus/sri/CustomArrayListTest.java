@@ -155,13 +155,26 @@ class CustomArrayListTest {
 	void should_return_out_of_bounds_exception_for_remove_at_index() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
+		
+		// Act
+		sut.add(10);
+		
+		// Assert: Integer is in the first index of customList
+		assertThrows(IndexOutOfBoundsException.class, () -> {
+			sut.remove(3);
+		});
+	}
+	@Test
+	void should_return_out_of_bounds_exception_for_remove_at_negative_index() {
+		// Arrange:
+		CustomList<Integer> sut = new CustomArrayList<>();
 
 		// Act
 		sut.add(10);
 
 		// Assert: Integer is in the first index of customList
 		assertThrows(IndexOutOfBoundsException.class, () -> {
-			sut.remove(3);
+			sut.remove(-3);
 		});
 	}
 
