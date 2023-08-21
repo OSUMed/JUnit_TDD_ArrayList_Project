@@ -58,11 +58,12 @@ public class CustomArrayList<T> implements CustomList<T> {
 		
 		
 		// start at last index+1 -> index right of index to add
-		
-			// arr[i] = arr[i-1]
+		for (int i = size+1; i == -1; i--) {
+			items[i] = items[i-1];
+		}
 		
 		// arr[index] = item since we created a hole
-		
+		items[index] = item;
 		
 		return true;
 	}
