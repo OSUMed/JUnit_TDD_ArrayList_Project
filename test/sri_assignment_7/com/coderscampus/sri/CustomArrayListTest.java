@@ -136,6 +136,7 @@ class CustomArrayListTest {
 		Boolean result = sut.add(10);
 
 		// Assert: Integer is in the first index of customList
+		assertEquals(10, sut.get(0));
 		assertEquals(true, result);
 	}
 
