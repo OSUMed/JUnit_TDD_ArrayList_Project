@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class CustomArrayListTest {
+	// Insert amount of elements to add to the array:
+
 	// Step 1 - Write a failing test
 	// Step 2 - Write the business logic to make test pass
 	// Step 3 - Refactor code
@@ -231,18 +233,27 @@ class CustomArrayListTest {
 	@Test
 	void should_increase_array_list_size_by_two() {
 		// Arrange:
-		CustomList<Integer> sut = new CustomArrayList<>();
+		Integer ind = 0;
+		Integer amount = 8;
+		CustomArrayList<String> sut = new CustomArrayList<String>();
+		for (ind = 1; ind <= amount; ind++) {
+			sut.add(indexMessagePrint(ind));
+		}
+		printArray(sut, "Initial");
+
+		sut.add(indexMessagePrint(ind));
+		ind++;
+		sut.add(indexMessagePrint(ind));
+		ind++;
+
+		printArray(sut, "\nAdded 2 items");
+		Integer initial_size = sut.getItemArrayLength();
 		
-		// Act
-		Integer number = 0;
-		for (int i = 1; i < 10; i++) {
-			sut.add(number++);
-		}
-		Integer initial_size = sut.getSize();
-		for (int i = 1; i < 10; i++) {
-			sut.add(number++);
-		}
-		Integer final_size = sut.getSize();
+		sut.add(indexMessagePrint(ind));
+		ind++;
+		printArray(sut, "\nAdded 1 items -> Array * 2");
+		Integer final_size = sut.getItemArrayLength();
+		
 		Integer expectedResult = final_size / initial_size;
 		
 		// Assert: 5th index should be number 5:
@@ -251,46 +262,85 @@ class CustomArrayListTest {
 	@Test
 	void should_increase_array_list_size_by_two_for_add_with_index() {
 		// Arrange:
-		System.out.println("In error one");
-		CustomList<Integer> sut = new CustomArrayList<>();
+		Integer ind = 0;
+		Integer amount = 8;
+		CustomArrayList<String> sut = new CustomArrayList<String>();
+		for (ind = 1; ind <= amount; ind++) {
+			sut.add(ind-1, indexMessagePrint(ind));
+		}
+		printArray(sut, "Initial");
 
-		// Act
-		Integer number = 0;
-		for (int i = 0; i <= 10; i++) {
-			sut.add(number, number);
-			number++;
-		}
-		Integer initial_size = sut.length;
-		for (int i = 0; i <= 10; i++) {
-			sut.add(number, number);
-			number++;
-		}
-		Integer final_size = sut.getSize();
-		System.out.println(initial_size);
-		System.out.println(final_size);
+		sut.add(ind-1, indexMessagePrint(ind));
+		ind++;
+		sut.add(ind-1, indexMessagePrint(ind));
+		ind++;
+
+		printArray(sut, "\nAdded 2 items");
+		Integer initial_size = sut.getItemArrayLength();
+		
+		sut.add(ind-1, indexMessagePrint(ind));
+		ind++;
+		printArray(sut, "\nAdded 1 items -> Array * 2");
+		Integer final_size = sut.getItemArrayLength();
+		
 		Integer expectedResult = final_size / initial_size;
-
+		
 		// Assert: 5th index should be number 5:
 		assertEquals(2, expectedResult);
 	}
 	@Test
 	void should_decrease_array_list_size_by_two() {
 		// Arrange:
-		CustomList<Integer> sut = new CustomArrayList<>();
-
-		// Act
-		Integer number = 0;
-		for (int i = 0; i < 21; i++) {
-			sut.add(number++);
+		Integer ind = 0;
+		Integer amount = 8;
+		CustomArrayList<String> sut = new CustomArrayList<String>();
+		for (ind = 1; ind <= amount; ind++) {
+			sut.add(indexMessagePrint(ind));
 		}
-		Integer initial_size = sut.;
+		printArray(sut, "Initial");
+
+		sut.add(indexMessagePrint(ind));
+		ind++;
+		sut.add(indexMessagePrint(ind));
+		ind++;
+
+		printArray(sut, "\nAdded 2 items");
+		
+		sut.add(indexMessagePrint(ind));
+		ind++;
+		Integer initial_size = sut.getItemArrayLength();
+		printArray(sut, "\nAdded 1 items -> Array * 2");
+
 		sut.remove(3);
-		Integer final_size = sut.getSize();
+		printArray(sut, "\nRemoved 1 item -> Array / 2");
+		
+		
+		Integer final_size = sut.getItemArrayLength();
 		System.out.println("initial is: " + initial_size);
 		System.out.println(final_size);
 		Integer expectedResult = initial_size / final_size;
 
 		// Assert: 5th index should be number 5:
 		assertEquals(2, expectedResult);
+	}
+	
+	// Helper Functions:
+	public static String indexMessagePrint(Integer ind) {
+		return "Item " + (ind-1);
+	}
+	public static void printArray(CustomArrayList<String> sut, String message) {
+		// Print out the array based on dynamic array current size:
+		System.out.println(message);
+		System.out.println("Array size is: " + sut.getItemArrayLength());
+		System.out.println("Current Last Index is: " + sut.getCurrentLastIndex());
+		for (int i = 1; i <= sut.getItemArrayLength(); i++) {
+			if (i - 1 > sut.getCurrentLastIndex()) {
+
+				System.out.println("Null index error thrown " + (i - 1));
+			} else {
+
+				System.out.println(sut.get(i - 1));
+			}
+		}
 	}
 }
