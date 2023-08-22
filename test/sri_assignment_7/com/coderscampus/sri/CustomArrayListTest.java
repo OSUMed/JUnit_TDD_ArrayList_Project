@@ -16,7 +16,7 @@ class CustomArrayListTest {
 	// Act
 	// Assert
 
-	// Next 6: Checks for dynamic array size changes for both add() method versions:
+	// Next 3: Checks for dynamic array size changes for both add() method versions:
 	@Test
 	void should_add_one_item_to_list() {
 		// Arrange:
@@ -140,7 +140,7 @@ class CustomArrayListTest {
 		assertEquals(true, result);
 	}
 
-	// Next 5: Checks if exceptions are thrown for the methods:
+	// Next 4: Checks if exceptions are thrown for the methods:
 	@Test
 	void should_return_out_of_bounds_exception_for_get_index() {
 		// Arrange:
