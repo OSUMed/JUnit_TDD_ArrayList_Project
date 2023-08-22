@@ -17,6 +17,9 @@ class CustomArrayListTest {
 	// Assert
 
 	// First 4 check the add(T item) method:
+	
+	
+	
 	@Test
 	void should_add_one_item_to_list() {
 		// Arrange:
@@ -65,7 +68,56 @@ class CustomArrayListTest {
 		assertEquals(10, expectedResult);
 		assertEquals(21, expectedSize);
 	}
-
+	// Repeat but for the add(index, value)
+		@Test
+		void should_add_one_item_to_list_with_index() {
+			// Arrange:
+			CustomList<Integer> sut = new CustomArrayList<>();
+			
+			// Act
+			sut.add(0, 10);
+			Integer expectedResult = sut.get(0);
+			Integer expectedSize = sut.getSize();
+			
+			// Assert: Integer is in the first index of customList
+			assertEquals(10, expectedResult);
+			assertEquals(1, expectedSize);
+		}
+		
+		@Test
+		void should_add_11_items_to_list_with_index() {
+			// Arrange:
+			CustomList<Integer> sut = new CustomArrayList<>();
+			Integer index = 0;
+			// Act
+			for (int i = 1; i < 12; i++) {
+				sut.add(index++, 10);
+			}
+			Integer expectedResult = sut.get(10);
+			Integer expectedSize = sut.getSize();
+			
+			// Assert: Integer is in the first index of customList
+			assertEquals(10, expectedResult);
+			assertEquals(11, expectedSize);
+		}
+		
+		@Test
+		void should_add_21_items_to_list_with_index() {
+			// Arrange:
+			CustomList<Integer> sut = new CustomArrayList<>();
+			Integer index = 0;
+			// Act
+			for (int i = 1; i < 22; i++) {
+				sut.add(index++, 10);
+			}
+			Integer expectedResult = sut.get(20);
+			Integer expectedSize = sut.getSize();
+			
+			// Assert: Integer is in the first index of customList
+			assertEquals(10, expectedResult);
+			assertEquals(21, expectedSize);
+		}
+		
 	@Test
 	void should_return_true_with_add_1_item() {
 		// Arrange:
