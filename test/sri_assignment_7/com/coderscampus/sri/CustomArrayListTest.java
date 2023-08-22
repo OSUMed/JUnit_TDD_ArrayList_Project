@@ -16,8 +16,6 @@ class CustomArrayListTest {
 	// Act
 	// Assert
 
-	// First 4 check the add(T item) method:
-
 	// Next 6: Checks for dynamic array size changes for both add() method versions:
 	@Test
 	void should_add_one_item_to_list() {

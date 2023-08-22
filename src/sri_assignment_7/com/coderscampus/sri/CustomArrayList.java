@@ -68,16 +68,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		// TODO Auto-generated method stub
 		if (index > current_last_ind || index < 0) throw new IndexOutOfBoundsException();
 		T removed_value = null;
-		
-		// Edge case: if only one item and we are returning it, shifting logic doesn't work
-		// so hard code the changes:
-//		if (index == 0) {
-//			removed_value = (T) items[index];
-//			items[index] = null;
-//			current_last_ind--;
-//			size--;
-//			return removed_value;
-//		}
+		// For debugging:
 		// from index, arr[i] = arr[i+1] until end of list
 		// stop at size-1 so we grab the last index with i+1 only
 		//				     x                              x
@@ -93,7 +84,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		for (int i = index; i < current_last_ind; i++) {
 			items[i] = items[i+1];
 		}
-		// remove last index since we shifted left:
+		// remove last index since we shifted left and update variables:
 		items[current_last_ind] = null;
 		current_last_ind--;
 		size--;
