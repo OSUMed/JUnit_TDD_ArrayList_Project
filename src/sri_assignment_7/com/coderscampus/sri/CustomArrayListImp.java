@@ -31,7 +31,7 @@ public class CustomArrayListImp {
 		sut.remove(3);
 		printArray(sut, "\nRemoved 1 item -> Array / 2");
 		
-		System.out.println("Repeat with the add(index, value) function! ");
+		System.out.println("\nRepeat with the add(index, value) function! ");
 		// Repeat  for add(index, value):
 		ind = 0;
 		sut = new CustomArrayList<String>();

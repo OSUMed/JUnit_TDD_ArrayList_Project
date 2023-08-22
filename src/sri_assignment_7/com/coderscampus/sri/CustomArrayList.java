@@ -60,14 +60,15 @@ public class CustomArrayList<T> implements CustomList<T> {
 //	5
 //	add(6,1)
 //	5 6
+	
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
 		// Throw if new index is not before or at end of the list:
 		if (index > current_last_ind+1) throw new IndexOutOfBoundsException();
 		
-		// check if array needs to inc size 2:
 		if (items.length == size) {
 			items = Arrays.copyOf(items, items.length * 2);
+//			expandBackingObjectArray();
 		}
 		
 		
@@ -77,8 +78,9 @@ public class CustomArrayList<T> implements CustomList<T> {
 		}
 		
 		// arr[index] = item since we created a hole
-		items[index] = item;
-		
+		items[size] = item;
+		current_last_ind = size;
+		size++;
 		return true;
 	}
 
