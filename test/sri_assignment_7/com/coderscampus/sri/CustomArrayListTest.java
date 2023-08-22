@@ -118,9 +118,12 @@ class CustomArrayListTest {
 		CustomList<Integer> sut = new CustomArrayList<>();
 
 		// Act
+		sut.add(5);
 		Boolean result = sut.add(0, 10);
 
-		// Assert: Integer is in the first index of customList
+		// Assert: 
+		assertEquals(10, sut.get(0));
+		assertEquals(5, sut.get(1));
 		assertEquals(true, result);
 	}
 
@@ -193,7 +196,7 @@ class CustomArrayListTest {
 		});
 	}
 
-	// Next 2: if default functions work- getSize() and get()
+	// Next 2: if default functions work- getSize() and get():
 	@Test
 	void should_return_size_1_with_add_1_item() {
 		// Arrange:
