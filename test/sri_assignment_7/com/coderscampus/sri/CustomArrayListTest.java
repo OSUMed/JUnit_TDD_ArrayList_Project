@@ -70,11 +70,28 @@ class CustomArrayListTest {
 	void should_return_true_with_add_1_item() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
-
+		
 		// Act
 		Boolean expectedResult = sut.add(10);
+		Integer size_after_addition = sut.getSize();
+		
+		
+		// Assert: Integer is in the first index of customList
+		assertEquals(1, size_after_addition);
+		assertEquals(true, expectedResult);
+	}
+	@Test
+	void should_return_true_with_add_1_item_at_index_0() {
+		// Arrange:
+		CustomList<Integer> sut = new CustomArrayList<>();
+
+		// Act
+		Boolean expectedResult = sut.add(0, 10);
+		Integer size_after_addition = sut.getSize();
+		
 
 		// Assert: Integer is in the first index of customList
+		assertEquals(1, size_after_addition);
 		assertEquals(true, expectedResult);
 	}
 
@@ -161,7 +178,7 @@ class CustomArrayListTest {
 		Integer removed_value = sut.remove(0);
 		Integer size_after_removeal = sut.getSize();
 		
-		// Assert: Integer is in the first index of customList
+		// Assert: Item is removed only if size is reflected to that change too:
 		assertEquals(0, size_after_removeal);
 		assertEquals(10, removed_value);
 	}

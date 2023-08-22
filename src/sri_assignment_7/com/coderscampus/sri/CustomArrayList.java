@@ -71,13 +71,13 @@ public class CustomArrayList<T> implements CustomList<T> {
 		
 		// Edge case: if only one item and we are returning it, shifting logic doesn't work
 		// so hard code the changes:
-		if (index == 0) {
-			removed_value = (T) items[index];
-			items[index] = null;
-			current_last_ind--;
-			size--;
-			return removed_value;
-		}
+//		if (index == 0) {
+//			removed_value = (T) items[index];
+//			items[index] = null;
+//			current_last_ind--;
+//			size--;
+//			return removed_value;
+//		}
 		// from index, arr[i] = arr[i+1] until end of list
 		// stop at size-1 so we grab the last index with i+1 only
 		//				     x                              x
@@ -89,10 +89,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 		
 		// Iterate to right before current_last_ind so last i+1 value is
 		// current_last_ind. 
+		removed_value = (T) items[index];
 		for (int i = index; i < current_last_ind; i++) {
-			if (i == index) {
-				removed_value = (T) items[i];
-			} 
 			items[i] = items[i+1];
 		}
 		// remove last index since we shifted left:
