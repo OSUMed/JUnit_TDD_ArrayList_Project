@@ -46,8 +46,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 	
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
-		// Throw if new index is not before or at end of the list:
-		if (index > current_last_ind+1) throw new IndexOutOfBoundsException();
+		// Throw if index has not been created yet:
+		if (index > current_last_ind) throw new IndexOutOfBoundsException();
 		
 		if (items.length == size) {
 			items = Arrays.copyOf(items, items.length * 2);
