@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10];
+	private Integer current_last_ind = 0;
 	private Integer size = 0;
 
 	@Override
@@ -14,25 +15,34 @@ public class CustomArrayList<T> implements CustomList<T> {
 		}
 		
 		// For all calls, add to array and update tracking variables:
-		items[size++] = item;
+		items[size] = item;
+		current_last_ind = size;
+		size++;
 		return true;
 	}
 	
-	private void expandBackingObjectArray() {
-		Object[] oldArray = items;
-		items = new Object[size*2];
-		for (int i = 0; i < size; i++) {
-			items[i] = oldArray[i];
-		}
+	public Integer getItemArrayLength() {
+		return items.length;
+	}
+	public Integer getCurrentLastIndex() {
+		return current_last_ind;
 	}
 	
-	private void reduceBackingObjectArray() {
-		Object[] oldArray = items;
-		items = new Object[size/2];
-		for (int i = 0; i < size; i++) {
-			items[i] = oldArray[i];
-		}
-	}
+//	private void expandBackingObjectArray() {
+//		Object[] oldArray = items;
+//		items = new Object[size*2];
+//		for (int i = 0; i < size; i++) {
+//			items[i] = oldArray[i];
+//		}
+//	}
+//	
+//	private void reduceBackingObjectArray() {
+//		Object[] oldArray = items;
+//		items = new Object[size/2];
+//		for (int i = 0; i < size; i++) {
+//			items[i] = oldArray[i];
+//		}
+//	}
 
 	@Override
 	public int getSize() {
@@ -42,7 +52,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public T get(int index) throws IndexOutOfBoundsException {
-		if (index > size) throw new IndexOutOfBoundsException();
+		if (index > current_last_ind) throw new IndexOutOfBoundsException();
 		return (T) items[index];
 	}
 	
@@ -52,8 +62,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 //	5 6
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
-		// Throw if new index is above size or not at new end of list:
-		if (index > size+1) throw new IndexOutOfBoundsException();
+		// Throw if new index is not before or at end of the list:
+		if (index > current_last_ind+1) throw new IndexOutOfBoundsException();
 		
 		// check if array needs to inc size 2:
 		if (items.length == size) {
@@ -76,28 +86,32 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException {
 		// TODO Auto-generated method stub
-		if (index > size || index < 0) throw new IndexOutOfBoundsException();
-		Integer removed_value = 0;
+		if (index > current_last_ind || index < 0) throw new IndexOutOfBoundsException();
+		T removed_value = null;
 		// from index, arr[i] = arr[i+1] until end of list
 		// stop at size-1 so we grab the last index with i+1 only
-		// 0 1 2 3 4 5 6 7 8 9  10 11 12 13 14 15 16 17 18 19 20
-		// 0 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+		//				     x                              x
+		// 0 1 2 3 4 5 6 7 8 9  10 11 12 13 14 15 16 17 18 19 20 
+		// 0 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 
 		//           x
-		// i = 5 
+		// i = 20 -> size 20 -> 2x array
+		// remove 1 item -> size 19 -> 1/2 array
 		
-		for (int i = index; i < size; i++) {
-			if (i == size) {
-				break;
-			}
+		// Iterate to right before current_last_ind so last i+1 value is
+		// current_last_ind. 
+		for (int i = index; i < current_last_ind; i++) {
 			if (i == index) {
-				removed_value = (Integer) items[i];
-			}
+				removed_value = (T) items[i];
+			} 
 			items[i] = items[i+1];
 		}
+		// remove last index since we shifted left:
+		items[current_last_ind] = null;
+		current_last_ind--;
 		
 		// check if items.length() is half of size. If so, reduce 
-		// array by size 2
-		if (items.length/2 == size) {
+		// array by size 2. last ind + 1 because 0 based:
+		if (items.length/2 == current_last_ind+1) {
 			items = Arrays.copyOf(items, items.length / 2);
 		} 
 		

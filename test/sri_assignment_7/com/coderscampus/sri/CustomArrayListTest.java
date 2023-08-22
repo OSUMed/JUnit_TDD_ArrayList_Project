@@ -260,7 +260,7 @@ class CustomArrayListTest {
 			sut.add(number, number);
 			number++;
 		}
-		Integer initial_size = sut.length();
+		Integer initial_size = sut.length;
 		for (int i = 0; i <= 10; i++) {
 			sut.add(number, number);
 			number++;
