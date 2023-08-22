@@ -52,7 +52,12 @@ public class CustomArrayListImp {
 		printArray(sut, "\nAdded 1 items -> Array * 2");
 
 		sut.remove(3);
-		printArray(sut, "\nRemoved 1 item -> Array / 2");
+		printArray(sut, "\nRemoved in the middle 1 item -> Array / 2");
+		
+		sut.add(4, "Add in the middle");
+		printArray(sut, "\nAdded in the middle 1 item -> Array / 2");
+		sut.add(3, "Add in the middle");
+		printArray(sut, "\nAdded in the middle 1 item again-> Array / 2");
 	}
 	
 	public static String indexMessagePrint(Integer ind) {

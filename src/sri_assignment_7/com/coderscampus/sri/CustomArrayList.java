@@ -27,6 +27,9 @@ public class CustomArrayList<T> implements CustomList<T> {
 	public Integer getCurrentLastIndex() {
 		return current_last_ind;
 	}
+	public Object[] getItems() {
+		return items;
+	}
 
 	@Override
 	public int getSize() {
@@ -51,12 +54,12 @@ public class CustomArrayList<T> implements CustomList<T> {
 		}
 		
 		// start at last index+1 -> index right of index to add
-		for (int i = size+1; i == -1; i--) {
+		for (int i = current_last_ind+1; i > index; i--) {
 			items[i] = items[i-1];
 		}
 		
 		// arr[index] = item since we created a hole
-		items[size] = item;
+		items[index] = item;
 		current_last_ind = size;
 		size++;
 		return true;

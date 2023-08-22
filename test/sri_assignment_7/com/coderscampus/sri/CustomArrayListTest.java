@@ -143,7 +143,7 @@ class CustomArrayListTest {
 		assertEquals(1, size_after_addition);
 		assertEquals(true, expectedResult);
 	}
-	
+
 	@Test
 	void should_return_actual_item_removed_from_list() {
 		// Arrange:
@@ -183,7 +183,7 @@ class CustomArrayListTest {
 		assertEquals(true, result);
 	}
 
-	// Next 5: Checks if exceptions are thrown for the methods: 
+	// Next 5: Checks if exceptions are thrown for the methods:
 	@Test
 	void should_return_out_of_bounds_exception_for_get_index() {
 		// Arrange:
@@ -253,7 +253,7 @@ class CustomArrayListTest {
 			sut.remove(-3);
 		});
 	}
-	
+
 	// Next 2: if default functions work- getSize() and get()
 	@Test
 	void should_return_size_1_with_add_1_item() {
@@ -284,7 +284,8 @@ class CustomArrayListTest {
 		assertEquals(5, expectedResult);
 	}
 
-	// Next 3: Checks if arrays are adjusting to right sizes dynamically for add/remove:
+	// Next 3: Checks if arrays are adjusting to right sizes dynamically for
+	// add/remove:
 	@Test
 	void should_increase_array_list_size_by_two() {
 		// Arrange:
@@ -378,6 +379,76 @@ class CustomArrayListTest {
 
 		// Assert: 5th index should be number 5:
 		assertEquals(2, expectedResult);
+	}
+
+	// Next 2: Check if when adding and removing from middle, the order is kept:
+	@Test
+	void should_keep_order_if_removed_from_middle() {
+		// Arrange:
+		Integer ind = 0;
+		Integer amount = 12;
+		CustomArrayList<String> sut = new CustomArrayList<String>();
+		for (ind = 1; ind <= amount; ind++) {
+			sut.add(ind - 1, indexMessagePrint(ind));
+		}
+
+		
+		// Here we remove index 3(thus value "Item 3" so it will go from 2 -> 4:
+		sut.remove(3);
+
+		// Object should equal like below after adding it at index 4:
+		Object[] answer = new Object[20];
+		Object[] items = sut.getItems();
+
+		answer[0] = "Item 0";
+		answer[1] = "Item 1";
+		answer[2] = "Item 2";
+		answer[3] = "Item 4"; // "Item 3" was removed
+		answer[4] = "Item 5";
+		answer[5] = "Item 6";
+		answer[6] = "Item 7";
+		answer[7] = "Item 8";
+		answer[8] = "Item 9";
+		answer[9] = "Item 10";
+		answer[10] = "Item 11";
+
+		// Assert: 
+		assertArrayEquals(answer, items);
+	}
+
+	@Test
+	void should_keep_order_if_added_in_middle() {
+		// Arrange:
+		Integer ind = 0;
+		Integer amount = 12;
+		CustomArrayList<String> sut = new CustomArrayList<String>();
+		for (ind = 1; ind <= amount; ind++) {
+			sut.add(ind - 1, indexMessagePrint(ind));
+		}
+
+		sut.add(4, "Add in the middle");
+
+		// Object should equal like below after adding it at index 4:
+		Object[] answer = new Object[20];
+		Object[] items = sut.getItems();
+
+		answer[0] = "Item 0";
+		answer[1] = "Item 1";
+		answer[2] = "Item 2";
+		answer[3] = "Item 3"; 
+		answer[4] = "Add in the middle";
+		answer[5] = "Item 4";
+		answer[6] = "Item 5";
+		answer[7] = "Item 6";
+		answer[8] = "Item 7";
+		answer[9] = "Item 8";
+		answer[10] = "Item 9";
+		answer[11] = "Item 10";
+		answer[12] = "Item 11";
+
+		// Assert: 5th index should be number 5:
+		assertArrayEquals(items, answer);
+
 	}
 
 	// Helper Functions for printing/debugging:
