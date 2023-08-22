@@ -165,20 +165,6 @@ class CustomArrayListTest {
 		});
 	}
 
-//	@Test
-//	void should_not_return_out_of_bounds_exception_if_index_added_is_at_new_end_of_list() {
-//		// Arrange:
-//		CustomList<Integer> sut = new CustomArrayList<>();
-//
-//		// Act
-//		sut.add(5);
-//
-//		// Assert: Integer is in the first index of customList
-//		assertDoesNotThrow(() -> {
-//			sut.add(1, 4);
-//		});
-//	}
-
 	@Test
 	void should_return_out_of_bounds_exception_for_remove_at_index() {
 		// Arrange:
@@ -269,35 +255,35 @@ class CustomArrayListTest {
 		assertEquals(2, expectedResult);
 	}
 
-//	@Test
-//	void should_increase_array_list_size_by_two_for_add_with_index() {
-//		// Arrange:
-//		Integer ind = 0;
-//		Integer amount = 8;
-//		CustomArrayList<String> sut = new CustomArrayList<String>();
-//		for (ind = 1; ind <= amount; ind++) {
-//			sut.add(ind - 1, indexMessagePrint(ind));
-//		}
-//		printArray(sut, "Initial");
-//
-//		sut.add(ind - 1, indexMessagePrint(ind));
-//		ind++;
-//		sut.add(ind - 1, indexMessagePrint(ind));
-//		ind++;
-//
-//		printArray(sut, "\nAdded 2 items");
-//		Integer initial_size = sut.getItemArrayLength();
-//
-//		sut.add(ind - 1, indexMessagePrint(ind));
-//		ind++;
-//		printArray(sut, "\nAdded 1 items -> Array * 2");
-//		Integer final_size = sut.getItemArrayLength();
-//
-//		Integer expectedResult = final_size / initial_size;
-//
-//		// Assert: 5th index should be number 5:
-//		assertEquals(2, expectedResult);
-//	}
+	@Test
+	void should_increase_array_list_size_by_two_for_add_with_index() {
+		// Arrange:
+		Integer ind = 0;
+		Integer amount = 8;
+		CustomArrayList<String> sut = new CustomArrayList<String>();
+		for (ind = 1; ind <= amount; ind++) {
+			sut.add(indexMessagePrint(ind));
+		}
+		printArray(sut, "Initial");
+
+		sut.add(indexMessagePrint(ind));
+		ind++;
+		sut.add(indexMessagePrint(ind));
+		ind++;
+
+		printArray(sut, "\nAdded 2 items");
+		Integer initial_size = sut.getItemArrayLength();
+
+		sut.add(5, indexMessagePrint(ind));
+		ind++;
+		printArray(sut, "\nAdded 1 items -> Array * 2");
+		Integer final_size = sut.getItemArrayLength();
+
+		Integer expectedResult = final_size / initial_size;
+
+		// Assert: 5th index should be number 5:
+		assertEquals(2, expectedResult);
+	}
 
 	@Test
 	void should_decrease_array_list_size_by_two() {
