@@ -187,17 +187,7 @@ class CustomArrayListTest {
 		// Assert: Integer is in the first index of customList
 		assertEquals(true, result);
 	}
-	@Test
-	void should_return_false_when_item__not_added_without_index() {
-		// Arrange:
-		CustomList<Integer> sut = new CustomArrayList<>();
 
-		// Act
-		Boolean result = sut.add(Integer.MAX_VALUE);
-
-		// overflow error(Max_value+1) should be false?
-		assertEquals(false, result);
-	}
 	// Check if getSize method works:
 	@Test
 	void should_return_size_1_with_add_1_item() {

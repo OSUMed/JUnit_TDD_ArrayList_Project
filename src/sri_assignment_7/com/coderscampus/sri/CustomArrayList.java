@@ -27,25 +27,10 @@ public class CustomArrayList<T> implements CustomList<T> {
 	public Integer getCurrentLastIndex() {
 		return current_last_ind;
 	}
-	
-//	private void expandBackingObjectArray() {
-//		Object[] oldArray = items;
-//		items = new Object[size*2];
-//		for (int i = 0; i < size; i++) {
-//			items[i] = oldArray[i];
-//		}
-//	}
-//	
-//	private void reduceBackingObjectArray() {
-//		Object[] oldArray = items;
-//		items = new Object[size/2];
-//		for (int i = 0; i < size; i++) {
-//			items[i] = oldArray[i];
-//		}
-//	}
 
 	@Override
 	public int getSize() {
+		// We want to return the size, not the last index(size - 1):
 		return this.size;
 	}
 
@@ -56,11 +41,6 @@ public class CustomArrayList<T> implements CustomList<T> {
 		return (T) items[index];
 	}
 	
-//	0 1 2 3
-//	5
-//	add(6,1)
-//	5 6
-	
 	@Override
 	public boolean add(int index, T item) throws IndexOutOfBoundsException {
 		// Throw if new index is not before or at end of the list:
@@ -68,9 +48,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		
 		if (items.length == size) {
 			items = Arrays.copyOf(items, items.length * 2);
-//			expandBackingObjectArray();
 		}
-		
 		
 		// start at last index+1 -> index right of index to add
 		for (int i = size+1; i == -1; i--) {
@@ -90,6 +68,16 @@ public class CustomArrayList<T> implements CustomList<T> {
 		// TODO Auto-generated method stub
 		if (index > current_last_ind || index < 0) throw new IndexOutOfBoundsException();
 		T removed_value = null;
+		
+		// Edge case: if only one item and we are returning it, shifting logic doesn't work
+		// so hard code the changes:
+		if (index == 0) {
+			removed_value = (T) items[index];
+			items[index] = null;
+			current_last_ind--;
+			size--;
+			return removed_value;
+		}
 		// from index, arr[i] = arr[i+1] until end of list
 		// stop at size-1 so we grab the last index with i+1 only
 		//				     x                              x
@@ -110,7 +98,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 		// remove last index since we shifted left:
 		items[current_last_ind] = null;
 		current_last_ind--;
-		
+		size--;
 		// check if items.length() is half of size. If so, reduce 
 		// array by size 2. last ind + 1 because 0 based:
 		if (items.length/2 == current_last_ind+1) {
