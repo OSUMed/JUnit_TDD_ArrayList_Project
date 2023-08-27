@@ -33,7 +33,6 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public int getSize() {
-		// We want to return the size, not the last index(size - 1):
 		return this.size;
 	}
 

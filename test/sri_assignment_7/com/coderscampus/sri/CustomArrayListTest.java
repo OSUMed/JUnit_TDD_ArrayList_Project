@@ -16,9 +16,9 @@ class CustomArrayListTest {
 	// Act
 	// Assert
 
-	// Next 3: Checks for dynamic array size changes for both add() method versions:
+	// Next 3: Checks for dynamic array size changes for add() versions:
 	@Test
-	void should_add_one_item_to_list() {
+	void should_increase_size_by_one_when_one_item_added() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
@@ -33,7 +33,7 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_add_11_items_to_list() {
+	void should_increase_size_to_eleven_when_eleven_items_added() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
@@ -50,7 +50,7 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_add_21_items_to_list() {
+	void should_increase_size_to_twenty_one_when_twenty_one_items_added() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
@@ -69,7 +69,7 @@ class CustomArrayListTest {
 	
 	// Next 5: Checks for return values for all functions(first 2 similar, delete?)
 	@Test
-	void should_return_true_with_add_1_item() {
+	void should_return_true_when_one_item_added_to_list() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
@@ -83,7 +83,7 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_return_true_with_add_1_item_at_index_0() {
+	void should_return_true_and_increase_size_to_two_when_item_added_at_index_zero() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
@@ -98,7 +98,7 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_return_actual_item_removed_from_list() {
+	void should_return_correct_value_when_item_removed_at_index() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
@@ -113,7 +113,7 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_return_true_when_item_added_with_index() {
+	void should_return_true_when_item_added_at_specified_index() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
@@ -128,7 +128,7 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_return_true_when_item_added_without_index() {
+	void should_return_true_when_item_added_without_specified_index() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
@@ -142,7 +142,7 @@ class CustomArrayListTest {
 
 	// Next 4: Checks if exceptions are thrown for the methods:
 	@Test
-	void should_return_out_of_bounds_exception_for_get_index() {
+	void should_throw_exception_when_getting_at_index_out_of_bounds() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
@@ -156,7 +156,7 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_return_out_of_bounds_exception_for_add_with_index() {
+	void should_throw_exception_when_adding_at_out_of_bounds_index() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
@@ -170,7 +170,7 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_return_out_of_bounds_exception_for_remove_at_index() {
+	void should_throw_exception_when_removing_at_out_of_bounds_index() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
@@ -184,7 +184,7 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_return_out_of_bounds_exception_for_remove_at_negative_index() {
+	void should_throw_exception_when_removing_at_negative_index() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
@@ -199,7 +199,7 @@ class CustomArrayListTest {
 
 	// Next 2: if default functions work- getSize() and get():
 	@Test
-	void should_return_size_1_with_add_1_item() {
+	void should_return_correct_size_after_one_item_added() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
@@ -212,7 +212,7 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_return_correct_value_at_index_5() {
+	void should_return_correct_value_when_getting_value_at_index() {
 		// Arrange:
 		CustomList<Integer> sut = new CustomArrayList<>();
 
@@ -230,7 +230,7 @@ class CustomArrayListTest {
 	// Next 3: Checks if arrays are adjusting to right sizes dynamically for
 	// add/remove:
 	@Test
-	void should_increase_array_list_size_by_two() {
+	void should_increase_array_size_by_factor_of_two_when_items_added() {
 		// Arrange:
 		Integer ind = 0;
 		Integer amount = 8;
@@ -260,7 +260,7 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_increase_array_list_size_by_two_for_add_with_index() {
+	void should_increase_array_size_by_factor_of_two_when_item_added_at_index() {
 		// Arrange:
 		Integer ind = 0;
 		Integer amount = 8;
@@ -290,7 +290,7 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_decrease_array_list_size_by_two() {
+	void should_decrease_array_size_by_factor_of_two_when_item_removed() {
 		// Arrange:
 		Integer ind = 0;
 		Integer amount = 8;
@@ -326,7 +326,7 @@ class CustomArrayListTest {
 
 	// Next 2: Check if when adding and removing from middle, the order is kept:
 	@Test
-	void should_keep_order_if_removed_from_middle() {
+	void should_preserve_order_when_item_removed_from_middle() {
 		// Arrange:
 		Integer ind = 0;
 		Integer amount = 12;
@@ -336,6 +336,7 @@ class CustomArrayListTest {
 		}
 
 		
+		// Act
 		// Here we remove index 3(thus value "Item 3" so it will go from 2 -> 4:
 		sut.remove(3);
 
@@ -360,7 +361,7 @@ class CustomArrayListTest {
 	}
 
 	@Test
-	void should_keep_order_if_added_in_middle() {
+	void should_preserve_order_when_item_added_in_middle() {
 		// Arrange:
 		Integer ind = 0;
 		Integer amount = 12;
