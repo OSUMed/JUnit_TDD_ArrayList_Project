@@ -8,11 +8,9 @@ This project aims to enhance the functionality of a custom ArrayList implementat
 2. [Getting Started](#getting-started)
 3. [Prerequisites](#prerequisites)
 4. [Installing](#installing)
-5. [Usage](#usage)
-6. [Testing](#testing)
-7. [Contributing](#contributing)
-8. [License](#license)
-9. [Author](#author)
+5. [Testing](#testing)
+6. [Contributing](#contributing)
+7. [Author](#author)
 
 ## Features
 - Implements a custom ArrayList based on a specific interface.
@@ -25,7 +23,7 @@ Clone the repository onto your local machine.
 
 ```bash
 git clone https://github.com/your-username/JUnit_TDD_ArrayList_Project.git
-
+```
 ## Prerequisites
 
 Java 8 or above
@@ -35,3 +33,18 @@ JUnit5
 ## Installing
 
 Navigate to the project directory and run the following command to install all the dependencies:
+mvn install
+
+## Testing
+
+This project uses JUnit5 for testing. To run all the tests, navigate to the project directory and execute:
+mvn test
+
+## Contributing
+
+Please read CONTRIBUTING.md for details on how to contribute to this project.
+
+## Author
+
+Srikanth Medicherla
+
